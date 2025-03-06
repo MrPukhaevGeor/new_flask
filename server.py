@@ -22,9 +22,8 @@ def index():
 
 @app.route('/list_prof/<num>')
 def list_prof(num):
-    list_profession = ["Инженер", "Врач", "Ученый", "Пилот"]
+    list_profession = ["Инженер", "Врач", "Ученый", "Пилот"]  # Пример списка профессий
     return render_template("list_prof.html", list_prof=list_profession, op=num)
-
 @app.route('/astronaut_selection')
 def astronaut_selection():
     with open("templates/ttt.txt", encoding="utf-8") as file:
