@@ -31,7 +31,16 @@ def astronaut_selection():
     with open("templates/ttt.txt", encoding="utf-8") as file:
         return file.read()
 
-
+@app.route
+def registratuion():
+    if request.method == "GET":
+        return render_template("registration.html")
+    elif request.method == "POST":
+        man = dict()
+        man['email'] = request.form.get("email")
+        man['school_class'] = request.form.get("school_class")
+        man['about'] = request.form.get("about")
+        return render_template("auto_answer")
 @app.route('/form_sample', methods=['POST', 'GET'])
 def form_sample():
     if request.method == 'GET':
