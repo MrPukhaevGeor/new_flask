@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -24,12 +24,20 @@ def index():
 def list_prof(num):
     list_profession = ["Инженер", "Врач", "Ученый", "Пилот"]  # Пример списка профессий
     return render_template("list_prof.html", list_prof=list_profession, op=num)
+
+
 @app.route('/astronaut_selection')
 def astronaut_selection():
     with open("templates/ttt.txt", encoding="utf-8") as file:
         return file.read()
 
-    return render_template('index.html')
+
+@app.route('/form_sample', methods=['POST', 'GET'])
+def form_sample():
+    if request.method == 'GET':
+        return render_template('registration.html')
+    else:
+        return render_template("auto_answer.html")
 
 
 @app.route('/promotion')
